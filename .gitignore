@@ -1,0 +1,6 @@
+form*
+.terraform*
+mykey*
+*.tfstate*
+README.html
+data-team/syd/*
