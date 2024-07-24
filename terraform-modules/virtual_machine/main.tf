@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "vm_nic" {
     name                          = var.ip_configuration
     subnet_id                     = var.vm_subnetid
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.vm_pip.id
+    public_ip_address_id          = azurerm_public_ip.vm_pip.*.id
   }
 }
 
@@ -109,7 +109,7 @@ resource "azurerm_linux_virtual_machine" "winvm" {
 
   #disable_password_authentication = false
   network_interface_ids = [
-    azurerm_network_interface.vm_nic.id,
+    azurerm_network_interface.vm_nic.*.id,
   ]
 
   source_image_reference {
